@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+group 'wanner-tool'
+version '1.0.1'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.7.RELEASE'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 可以实现 Maven BOM 的功能，来管理依赖的版本信息
+    implementation platform('io.projectreactor:reactor-bom:2020.0.20')
+    implementation 'io.projectreactor:reactor-core'
+}
+
+test {
+    useJUnitPlatform()
+}
